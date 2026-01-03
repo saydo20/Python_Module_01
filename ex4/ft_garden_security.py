@@ -14,7 +14,9 @@ class SecurePlant:
                   f"age {age_value}days [REJECTED]")
             print("Security: Negative age rejected")
             print()
-        self._age = age_value
+        else:
+            self._age = age_value
+            print(f"Age updated: {self._height}days [OK]")
     """the setter of the age and reject the nigative values"""
     def set_age(self, height_value):
         if height_value < 0:
@@ -26,7 +28,6 @@ class SecurePlant:
         else:
             self._height = height_value
             print(f"Height updated: {self._height}cm [OK]")
-        self._height = height_value
     """create a getter of the height and the getter of the age"""
     def get_height(self):
         return self._height
