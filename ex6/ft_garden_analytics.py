@@ -1,19 +1,30 @@
 class GardenManager:
     def __init__(self, name):
         self.name = name
+        self.stats = self.GardenStats()
+        self.ManagerGardens = []
 
     class GardenStats:
         def __init__(self):
             self.Gardens = []
 
-        def add_garden(self):
-            Garden_name = input("what is the name of the gareden: ")
-            self.Gardens = self.Gardens + [Garden_name]
-            print(f"the garden {Garden_name} is added")
+        def add_garden(self, garden):
+            self.Gardens = self.Gardens + [garden]
+
+    def add_garden(self, garden):
+        self.ManagerGardens = self.ManagerGardens + [garden]
+        self.stats.add_garden(garden)
+
+    def show_garden(self):
+        for garden in self.ManagerGardens:
+            print(f"{garden.garden_name}")
 
     @classmethod
-    def create_garden_network():
-        pass
+    def create_garden_network(self, gardens):
+        network = {}
+        for garden in gardens:
+            network[garden.garden_name] = []
+        return network
 
 
 class Plant:
@@ -64,3 +75,28 @@ class Garden:
 
     def add_plant(self, plant):
         self.plants = self.plants + [plant]
+
+    def show_plants(self):
+        for plant in self.plants:
+            print(f"{plant.name}")
+
+
+alice = GardenManager("alice")
+plant = Plant("Rose", 120, 50)
+
+garden1 = Garden("garden")
+garden1.add_plant(plant)
+garden1.show_plants()
+
+alice.add_garden(garden1)
+alice.show_garden()
+
+garden1 = Garden("Garden A")
+garden2 = Garden("Garden B")
+garden3 = Garden("Garden C")
+
+network = GardenManager.create_garden_network(
+    [garden1, garden2, garden3]
+)
+
+print(network)
