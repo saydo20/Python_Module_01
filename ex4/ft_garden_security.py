@@ -11,23 +11,23 @@ class SecurePlant:
         if age_value < 0:
             print()
             print("Invalid operation attempted :"
-                  f"age {age_value}days [REJECTED]")
-            print("Security: Negative age rejected")
+                  f"height {age_value}cm [REJECTED]")
+            print("Security: Negative height rejected")
             print()
         else:
             self._age = age_value
-            print(f"Age updated: {self._height}days [OK]")
+            print(f"hieght updated: {self._height}cm [OK]")
     """the setter of the age and reject the nigative values"""
     def set_age(self, height_value):
         if height_value < 0:
             print()
             print("Invalid operation attempted :"
                   f"age {height_value}days [REJECTED]")
-            print("Security: Negative height rejected")
+            print("Security: Negative age rejected")
             print()
         else:
             self._height = height_value
-            print(f"Height updated: {self._height}cm [OK]")
+            print(f"age updated: {self._height}days [OK]")
     """create a getter of the height and the getter of the age"""
     def get_height(self):
         return self._height
