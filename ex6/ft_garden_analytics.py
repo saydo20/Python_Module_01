@@ -1,4 +1,6 @@
 class GardenManager:
+    Total_gardens_managed = 0
+
     def __init__(self, name):
         self.name = name
         self.stats = self.GardenStats()
@@ -49,11 +51,23 @@ class GardenManager:
                     flowering += 1
                 else:
                     regular += 1
-            print(f"Plant types: {regular} regular, {flowering} flowering, {prize} prize flowers")
+            print(f"Plant types: {regular} regular,"
+                  f" {flowering} flowering, {prize} prize flowers")
+
+        def count_score(self, garden):
+            score_count = 0
+            # prize_total = 0
+            for plant in garden:
+                score_count += plant.get_height()
+            for Plant in garden.plants:
+                if "_Prize_points" in plant.__dict__:
+                    prize_total += plant.get_prize_points()
+            return score_count
 
     def add_garden(self, garden):
         self.ManagerGardens = self.ManagerGardens + [garden]
         self.stats.add_garden(garden)
+        self.Total_gardens_managed += 1
 
     def show_garden(self):
         for garden in self.ManagerGardens:
@@ -77,6 +91,10 @@ class GardenManager:
         for garden in gardens:
             network[garden.garden_name] = []
         return network
+
+    @staticmethod
+    def valid_height(height):
+        return height > 25
 
 
 class Plant:
@@ -133,6 +151,9 @@ class PrizeFlower(FloweringPlant):
             self._Prize_points = points_value
             print(f"the value {points_value} is updated [OK]")
 
+    def get_prize_points(self):
+        return self._Prize_points
+
 
 class Garden:
     def __init__(self, garden_name):
@@ -168,22 +189,9 @@ final_plants = alice.stats.calculate_plants_in_gardens()
 print(f"Plants added: {final_plants - initial_plants},"
       f" Total growth: {grow_counter}cm")
 alice.stats.count_types(Garden)
+print()
+print("Height validation test:",
+      GardenManager.valid_height(Oak.get_height()))
+print(f"Garden scores - {alice.name}: {alice.stats.count_score(Garden)}")
 
-
-
-
-
-
-
-
-
-
-# garden1 = Garden("Garden A")
-# garden2 = Garden("Garden B")
-# garden3 = Garden("Garden C")
-
-# network = GardenManager.create_garden_network([garden1, garden2, garden3])
-
-# print(network)
-
-
+print(f"Total gardens managed: {alice.Total_gardens_managed}")
