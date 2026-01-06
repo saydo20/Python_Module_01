@@ -47,7 +47,3 @@ print()
 get the value of the class variable
 """
 print(f"Total plants created: {Plant.Total_plants}")
-
-
-def main():
-    help(Plant)
