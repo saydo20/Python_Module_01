@@ -31,14 +31,14 @@ class GardenManager:
             print("Plants in garden:")
             for plant in garden.plants:
                 if "_Prize_points" in plant.__dict__:
-                    print(f"- {plant.name}: {plant.get_height()},"
+                    print(f"- {plant.name}: {plant.get_height()}cm,"
                           f" {plant.color} flowers {plant.bloom()},"
                           f" Prize point: {plant._Prize_points}")
                 elif "color" in plant.__dict__:
-                    print(f"- {plant.name}: {plant.get_height()},"
-                          f" {plant.color} flowers {plant.bloom()},")
+                    print(f"- {plant.name}: {plant.get_height()}cm,"
+                          f" {plant.color} flowers {plant.bloom()}")
                 else:
-                    print(f"- {plant.name}: {plant.get_height()}")
+                    print(f"- {plant.name}: {plant.get_height()}cm")
 
         def count_types(self, garden):
             prize = 0
@@ -56,18 +56,18 @@ class GardenManager:
 
         def count_score(self, garden):
             score_count = 0
-            # prize_total = 0
-            for plant in garden:
+            prize_total = 0
+            for plant in garden.plants:
                 score_count += plant.get_height()
-            for Plant in garden.plants:
+            for plant in garden.plants:
                 if "_Prize_points" in plant.__dict__:
                     prize_total += plant.get_prize_points()
-            return score_count
+            return score_count + prize_total * 4
 
     def add_garden(self, garden):
         self.ManagerGardens = self.ManagerGardens + [garden]
         self.stats.add_garden(garden)
-        self.Total_gardens_managed += 1
+        GardenManager.Total_gardens_managed += 1
 
     def show_garden(self):
         for garden in self.ManagerGardens:
@@ -168,6 +168,13 @@ class Garden:
             print(f"{plant.name}")
 
 
+plant1 = Plant("plant1", 40, 50)
+plant2 = Plant("plant2", 52, 50)
+garden2 = Garden("garden2")
+garden2.add_plant(plant1)
+garden2.add_plant(plant2)
+bob = GardenManager("Bob")
+bob.add_garden(garden2)
 print("=== Garden Management System Demo ===")
 print()
 Oak = Plant("Oak Tree", 100, 1800)
@@ -192,6 +199,6 @@ alice.stats.count_types(Garden)
 print()
 print("Height validation test:",
       GardenManager.valid_height(Oak.get_height()))
-print(f"Garden scores - {alice.name}: {alice.stats.count_score(Garden)}")
-
-print(f"Total gardens managed: {alice.Total_gardens_managed}")
+print(f"Garden scores - {alice.name}: {alice.stats.count_score(Garden)}, "
+      f"{bob.name}: {bob.stats.count_score(garden2)}")
+print(f"Total gardens managed: {GardenManager.Total_gardens_managed}")
