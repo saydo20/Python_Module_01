@@ -6,28 +6,28 @@ class SecurePlant:
         self._age = age
         self._height = height
         print(f"Plant created: {self.name}")
-    """the setter of the hieght and reject the nigative values"""
-    def set_hieght(self, age_value):
+    """the setter of the age and reject the nigative values"""
+    def set_age(self, age_value):
         if age_value < 0:
             print()
             print("Invalid operation attempted :"
-                  f"height {age_value}cm [REJECTED]")
-            print("Security: Negative height rejected")
+                  f"days {age_value}days [REJECTED]")
+            print("Security: Negative days rejected")
             print()
         else:
             self._age = age_value
-            print(f"hieght updated: {self._height}cm [OK]")
+            print(f"age updated: {self._age}cm [OK]")
     """the setter of the age and reject the nigative values"""
-    def set_age(self, height_value):
+    def set_height(self, height_value):
         if height_value < 0:
             print()
             print("Invalid operation attempted :"
-                  f"age {height_value}days [REJECTED]")
-            print("Security: Negative age rejected")
+                  f"height {height_value}cm [REJECTED]")
+            print("Security: Negative height rejected")
             print()
         else:
             self._height = height_value
-            print(f"age updated: {self._height}days [OK]")
+            print(f"height updated: {self._height}cm [OK]")
     """create a getter of the height and the getter of the age"""
     def get_height(self):
         return self._height
@@ -36,13 +36,14 @@ class SecurePlant:
         return self._age
 
 
-"""print the readable output"""
-print("=== Garden Security System ===")
-Rose = SecurePlant("Rose", 20, 29)
-Rose.set_age(25)
-Rose.set_age(30)
-Rose.set_hieght(-5)
-print(
-      f"Current plant : {Rose.name} "
-      f"({Rose.get_height()}cm {Rose.get_age()} days)"
-)
+if __name__ == "__main__":
+    """print the readable output"""
+    print("=== Garden Security System ===")
+    Rose = SecurePlant("Rose", 20, 29)
+    Rose.set_height(25)
+    Rose.set_age(30)
+    Rose.set_height(-5)
+    print(
+        f"Current plant: {Rose.name} "
+        f"({Rose.get_height()}cm, {Rose.get_age()} days)"
+    )
