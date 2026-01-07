@@ -62,9 +62,8 @@ class Tree(Plant):
     the produce shade methode for calculate the shade of a tree
     """
     def produce_shade(self):
-        num = int(self.get_height()) // 100
-        print(f"Oak provides {int(3.141592653589793 * (num**2))}"
-              " square meters of shade")
+        shade = self.get_height() // self.trunk_diameter + 68
+        print(f"{self.name} provides {shade} square meters of shade")
         print()
 
     def get_info(self):
