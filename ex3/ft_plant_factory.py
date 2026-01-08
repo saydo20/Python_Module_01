@@ -1,34 +1,29 @@
 class Plant:
-    Total_plants = 0
-    """
-    create the Plant class and set the name, age, height attributes
-    """
-    def __init__(self, name, height, Age):
+    total_plants = 0
+
+    """create the Plant class and set the name, age, height attributes"""
+    def __init__(self, name, height, age):
         self.name = name
-        self.Age = Age
+        self.age = age
         self.height = height
-        Plant.Total_plants += 1
-    """
-    the grow method that increment the height by 1
-    """
+        Plant.total_plants += 1
+
+    """the grow method that increment the height by 1"""
     def grow(self):
         self.height += 1
-    """
-    the age method that increment the age by 1
-    """
+
+    """the age method that increment the age by 1"""
     def age(self):
-        self.Age += 1
-    """
-    the get_info method print informations about the plant
-    """
+        self.age += 1
+
+    """the get_info method print informations about the plant"""
     def get_info(self):
-        print(f"{self.name} ({self.height}cm, {self.Age} days)")
+        print(f"{self.name} ({self.height}cm, {self.age} days)")
 
 
 if __name__ == "__main__":
-    """
-    creat the list that will hold all the objects
-    """
+
+    """creat the list that will hold all the objects"""
     list = [
         Plant("Rose", 25, 30),
         Plant("Oak", 200, 365),
@@ -36,15 +31,13 @@ if __name__ == "__main__":
         Plant("Sunflower", 80, 45),
         Plant("Fern", 15, 120)
     ]
-    """
-    a loop for print all the objects
-    """
+
+    """a loop for print all the objects"""
     print("=== Plant Factory Output ===")
     for i in list:
         print("Created: ", end="")
         i.get_info()
     print()
-    """
-    get the value of the class variable
-    """
-    print(f"Total plants created: {Plant.Total_plants}")
+
+    """get the value of the class variable"""
+    print(f"Total plants created: {Plant.total_plants}")

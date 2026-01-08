@@ -1,22 +1,20 @@
 class Plant:
-    """
-    create the 3 attributes of the plant class
-    """
+
+    """create the 3 attributes of the plant class"""
     def __init__(self, name, height, age):
         self.name = name
         self.height = height
         self.age = age
-        """
-        creat 3 obeject with the plant class(bleuprint)
-        """
 
 
 if __name__ == "__main__":
-    Rose = Plant("Rose", 25, 30)
-    Sunflower = Plant("Sunflower", 80, 45)
-    Cactus = Plant("Cactus", 15, 120)
+
+    """creat 3 obeject with the plant class(bleuprint)"""
+    rose = Plant("Rose", 25, 30)
+    sunflower = Plant("Sunflower", 80, 45)
+    cactus = Plant("Cactus", 15, 120)
 
     print("=== Garden Plant Registry ===")
-    print(f"{Rose.name}: {Rose.height}cm, {Rose.age} days old")
-    print(f"{Sunflower.name}: {Sunflower.height}cm, {Sunflower.age} days old")
-    print(f"{Cactus.name}: {Cactus.height}cm, {Cactus.age} days old")
+    print(f"{rose.name}: {rose.height}cm, {rose.age} days old")
+    print(f"{sunflower.name}: {sunflower.height}cm, {sunflower.age} days old")
+    print(f"{cactus.name}: {cactus.height}cm, {cactus.age} days old")

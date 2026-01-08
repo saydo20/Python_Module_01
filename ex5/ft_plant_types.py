@@ -1,30 +1,27 @@
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name):
         self.name = name
-        self._height = height
-        self._age = age
+        self._height = 0
+        self._age = 0
+
     """the setter of the hieght and reject the nigative values"""
     def set_age(self, age_value):
         if age_value < 0:
-            print()
-            print("Invalid operation attempted :"
+            print("\nInvalid operation attempted :"
                   f"age {age_value}days [REJECTED]")
-            print("Security: Negative age rejected")
-            print()
+            print("Security: Negative age rejected\n")
         else:
             self._age = age_value
-            print(f"Age updated: {self._age}days [OK]")
+
     """the setter of the age and reject the nigative values"""
     def set_height(self, height_value):
         if height_value < 0:
-            print()
-            print("Invalid operation attempted :"
-                  f"age {height_value}days [REJECTED]")
-            print("Security: Negative height rejected")
-            print()
+            print("\nInvalid operation attempted :"
+                  f"height {height_value}cm [REJECTED]")
+            print("Security: Negative height rejected\n")
         else:
             self._height = height_value
-            print(f"Height updated: {self._height}cm [OK]")
+
     """create a getter of the height and the getter of the age"""
     def get_height(self):
         return self._height
@@ -37,14 +34,15 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name, _height, _age, color):
+    def __init__(self, name, color):
+
         """use the super function to use the parent constructor"""
-        super().__init__(name, _height, _age)
+        super().__init__(name)
         self.color = color
+
     """the bloom methode that is special for the flower class"""
     def bloom(self):
-        print(f"{self.name} is blooming beautifully!")
-        print()
+        print(f"{self.name} is blooming beautifully!\n")
 
     def get_info(self):
         print(f"{self.name} ({__class__.__name__}): {self.get_height()}cm"
@@ -55,16 +53,14 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name, _height, _age, trunk_diameter):
-        super().__init__(name, _height, _age)
+    def __init__(self, name, trunk_diameter):
+        super().__init__(name)
         self.trunk_diameter = trunk_diameter
-    """
-    the produce shade methode for calculate the shade of a tree
-    """
+
+    """the produce shade methode for calculate the shade of a tree"""
     def produce_shade(self):
         shade = self.get_height() // self.trunk_diameter + 68
-        print(f"{self.name} provides {shade} square meters of shade")
-        print()
+        print(f"{self.name} provides {shade} square meters of shade\n")
 
     def get_info(self):
         print(f"{self.name} ({__class__.__name__}): {self.get_height()}cm"
@@ -75,8 +71,8 @@ class Tree(Plant):
 
 
 class Vegetable(Plant):
-    def __init__(self, name, _height, _age, harvest_season):
-        super().__init__(name, _height, _age)
+    def __init__(self, name, harvest_season):
+        super().__init__(name)
         self.harvest_season = harvest_season
     """check the season of the harvest and the print what it rich"""
     def nutritional_value(self):
@@ -97,17 +93,28 @@ class Vegetable(Plant):
 
 
 if __name__ == "__main__":
-    Tulip = Flower("Tulip", 15, 40, "pink")
-    Rose = Flower("Rose", 25, 30, "red")
-    Oak = Tree("Oak", 500, 1825, 50)
-    Oalm = Tree("Palm", 1000, 800, 30)
-    Tomato = Vegetable("Tomato", 80, 90, "summer harvest")
-    Carrot = Vegetable("Carrot", 120, 30, "winter")
-    print("=== Garden Plant Types ===")
-    print()
-    Rose.get_info()
-    Rose.bloom()
-    Oak.get_info()
-    Oak.produce_shade()
-    Tomato.get_info()
-    Tomato.nutritional_value()
+    tulip = Flower("Tulip", "pink")
+    tulip.set_height(15)
+    tulip.set_age(40)
+    rose = Flower("Rose", "red")
+    rose.set_height(25)
+    rose.set_age(30)
+    oak = Tree("Oak", 50)
+    oak.set_height(500)
+    oak.set_age(1825)
+    palm = Tree("Palm", 30)
+    palm.set_height(1000)
+    palm.set_age(800)
+    tomato = Vegetable("Tomato", "summer harvest")
+    tomato.set_height(80)
+    tomato.set_age(90)
+    carrot = Vegetable("Carrot", "winter")
+    carrot.set_height(120)
+    carrot.set_age(30)
+    print("=== Garden Plant Types ===\n")
+    rose.get_info()
+    rose.bloom()
+    oak.get_info()
+    oak.produce_shade()
+    tomato.get_info()
+    tomato.nutritional_value()
