@@ -18,7 +18,7 @@ class Plant:
 
     """the get_info method print informations about the plant"""
     def get_info(self):
-        print(f"{self.name} ({self.height}cm, {self.age} days)")
+        return f"{self.name} ({self.height}cm, {self.age} days)"
 
 
 if __name__ == "__main__":
@@ -34,9 +34,9 @@ if __name__ == "__main__":
 
     """a loop for print all the objects"""
     print("=== Plant Factory Output ===")
+
     for i in list:
-        print("Created: ", end="")
-        i.get_info()
+        print(f"Created: {i.get_info()}")
     print()
 
     """get the value of the class variable"""

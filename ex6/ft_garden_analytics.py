@@ -30,7 +30,7 @@ class GardenManager:
             print("\n=== Alice's Garden Report ===")
             print("Plants in garden:")
             for plant in garden.plants:
-                if "_prize_points" in plant.__dict__:
+                if "_PrizeFlower__prize_points" in plant.__dict__:
                     print(f"- {plant.name}: {plant.get_height()}cm,"
                           f" {plant.color} flowers {plant.bloom()},"
                           f" Prize point: {plant.get_prize_points()}")
@@ -50,7 +50,7 @@ class GardenManager:
             use the __dict__ to search if the object contain the attribute
             """
             for plant in garden.plants:
-                if "_prize_points" in plant.__dict__:
+                if "_PrizeFlower__prize_points" in plant.__dict__:
                     prize += 1
                 elif "color" in plant.__dict__:
                     flowering += 1
@@ -98,17 +98,20 @@ class GardenManager:
         return couter
 
     """ method that works on the manager type itself"""
-    @classmethod
     def create_garden_network(cls, gardens):
         network = {}
         for garden in gardens:
             network[garden.garden_name] = []
         return network
 
+    create_garden_network = classmethod(create_garden_network)
+
     """static methode to chaeck if the height id valid or not"""
     @staticmethod
     def valid_height(height):
         return height > 25
+
+    valid_height = staticmethod(valid_height)
 
 
 class Plant:
@@ -116,8 +119,8 @@ class Plant:
     """create the palnt class (the parent class"""
     def __init__(self, name):
         self.name = name
-        self._height = 0
-        self._age = 0
+        self.__height = 0
+        self.__age = 0
 
     """setter for the age"""
     def set_age(self, age_value):
@@ -125,7 +128,7 @@ class Plant:
             print("Invalid operation attemped"
                   f"age {age_value}days [REJECTED]")
         else:
-            self._age = age_value
+            self.__age = age_value
 
     """setter for the height"""
     def set_height(self, height_value):
@@ -133,20 +136,20 @@ class Plant:
             print("Invalid operation attemped"
                   f"height {height_value}cm [REJECTED]")
         else:
-            self._height = height_value
+            self.__height = height_value
 
     """grow methode that makes the plant object to grow"""
     def grow(self):
-        self._height += 1
+        self.__height += 1
         print(f"{self.name} grow 1cm")
 
     """getter for the height"""
     def get_height(self):
-        return self._height
+        return self.__height
 
     """getter for the age"""
     def get_age(self):
-        return self._age
+        return self.__age
 
 
 class FloweringPlant(Plant):
@@ -166,18 +169,18 @@ class PrizeFlower(FloweringPlant):
     """the prize flower class that inhiret from the plant class"""
     def __init__(self, name, color):
         super().__init__(name, color)
-        self._prize_points = 0
+        self.__prize_points = 0
 
     """setter for the points"""
     def set_points(self, points_value):
         if points_value < 0:
             print(f"the value{points_value} is [REJECTED] NON NIGATIVE VALUE")
         else:
-            self._prize_points = points_value
+            self.__prize_points = points_value
 
     """getter for the prize points"""
     def get_prize_points(self):
-        return self._prize_points
+        return self.__prize_points
 
 
 class Garden:

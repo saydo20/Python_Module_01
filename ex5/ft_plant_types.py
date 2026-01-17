@@ -1,8 +1,8 @@
 class Plant:
     def __init__(self, name):
         self.name = name
-        self._height = 0
-        self._age = 0
+        self.__height = 0
+        self.__age = 0
 
     """the setter of the hieght and reject the nigative values"""
     def set_age(self, age_value):
@@ -11,7 +11,7 @@ class Plant:
                   f"age {age_value}days [REJECTED]")
             print("Security: Negative age rejected\n")
         else:
-            self._age = age_value
+            self.__age = age_value
 
     """the setter of the age and reject the nigative values"""
     def set_height(self, height_value):
@@ -20,14 +20,14 @@ class Plant:
                   f"height {height_value}cm [REJECTED]")
             print("Security: Negative height rejected\n")
         else:
-            self._height = height_value
+            self.__height = height_value
 
     """create a getter of the height and the getter of the age"""
     def get_height(self):
-        return self._height
+        return self.__height
 
     def get_age(self):
-        return self._age
+        return self.__age
 
 
 """the flower class that inhiret from the Plant class"""

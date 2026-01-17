@@ -5,8 +5,8 @@ class SecurePlant:
         self.name = name
 
         """the age and the height are now protecteds"""
-        self._age = 0
-        self._height = 0
+        self.__age = 0
+        self.__height = 0
         print(f"Plant created: {self.name}")
 
     """the setter of the age and reject the nigative values"""
@@ -18,8 +18,8 @@ class SecurePlant:
             print("Security: Negative days rejected")
             print()
         else:
-            self._age = age_value
-            print(f"age updated: {self._age} days [OK]")
+            self.__age = age_value
+            print(f"age updated: {self.__age} days [OK]")
 
     """the setter of the age and reject the nigative values"""
     def set_height(self, height_value):
@@ -30,15 +30,15 @@ class SecurePlant:
             print("Security: Negative height rejected")
             print()
         else:
-            self._height = height_value
-            print(f"height updated: {self._height}cm [OK]")
+            self.__height = height_value
+            print(f"height updated: {self.__height}cm [OK]")
 
     """create a getter of the height and the getter of the age"""
     def get_height(self):
-        return self._height
+        return self.__height
 
     def get_age(self):
-        return self._age
+        return self.__age
 
 
 if __name__ == "__main__":
@@ -49,7 +49,5 @@ if __name__ == "__main__":
     rose.set_height(25)
     rose.set_age(30)
     rose.set_height(-5)
-    print(
-        f"Current plant: {rose.name} "
-        f"({rose.get_height()}cm, {rose.get_age()} days)"
-    )
+    print(f"Current plant: {rose.name} "
+          f"({rose.get_height()}cm, {rose.get_age()} days)")
